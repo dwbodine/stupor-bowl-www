@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+Dockerfile
+Makefile
+public-endpoint.json
+containers.json
+.dockerignore
+.git
+.gitignore
+aws
+backup
+.vscode
+.env.development

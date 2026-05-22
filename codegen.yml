@@ -1,0 +1,13 @@
+schema: ${VITE_GRAPHQL_ENDPOINT}
+documents: src/graphql/**/*.graphql
+
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      useTypeImports: true
+      rawRequest: false
+      maybeValue: T | null

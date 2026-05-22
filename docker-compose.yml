@@ -1,0 +1,8 @@
+name: stupor-bowl
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8081:80"
+    

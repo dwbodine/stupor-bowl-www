@@ -1,0 +1,112 @@
+query GetQuestions {
+  questionsWithOptions {
+    question {
+      id
+      question
+      points
+      actualAnswer
+      notes
+      type {
+        id
+        type
+      }
+    }
+    multipleChoices {
+      id
+      order
+      choice
+    }
+    teams {
+      id
+      name
+    }
+    booleanOptions {
+      value
+      label
+    }
+  }
+}
+
+query AnswersForUser($userId: Int!) {
+  answersForUser(userId: $userId) {
+    id
+    value
+    question {
+      id
+      question
+      points
+      actualAnswer
+      notes
+      type {
+        id
+        type
+      }
+    }
+    user {
+      id
+      firstName
+      lastName
+    }
+  }
+}
+
+query GetAppSettings {
+  registrationOpen
+  resultsPublished
+}
+
+query GetLeaderboard {
+  leaderboard {
+    user {
+      id
+      firstName
+      lastName
+      email
+    }
+    score
+    correctCount
+    answeredCount
+  }
+}
+
+query AnswersForIdentity($firstName: String!, $lastName: String!, $email: String!) {
+  answersForIdentity(firstName: $firstName, lastName: $lastName, email: $email) {
+    id
+    value
+    question {
+      id
+      question
+      points
+      type {
+        id
+        type
+      }
+    }
+    user {
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+}
+
+mutation RegisterUser($inpCreateUserut: UserInput!) {
+  registerUser(data: $inpCreateUserut) {
+    id
+    firstName
+    lastName
+    email
+  }
+}
+
+mutation SubmitAnswers($userId: Int!, $answers: [AnswerItemInput!]!) {
+  submitAnswers(userId: $userId, answers: $answers) {
+    id
+    question {
+      id
+      question
+    }
+    value
+  }
+}
